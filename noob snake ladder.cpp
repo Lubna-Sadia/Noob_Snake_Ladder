@@ -33,17 +33,19 @@ int ladder_58_82(int *score)
     return 1;}
     else return 0;
 }
-void throw_dice(int *score,int *moving)
+int throw_dice(int *score,int *moving)
 {
     srand(time(0));
     int move=rand()%6+1;
     *score+=move;
     if(*score<=100){
         *moving=move;
+        return 1;
     }
     else{
        *score-=move;
        *moving=move;
+       return 0;
     }
 }
 int main()
@@ -65,12 +67,12 @@ int main()
 
     while(1){
     cout<<nl<<"Player1 press 1 to throw dice"<<nl;
-    int press;
+    int press,check;
     cin>>press;
     if(press==1){
         int move1;
-        throw_dice(&player1_score,&move1);
-        if(move1){
+        check=throw_dice(&player1_score,&move1);
+        if(check){
             cout<<"Player1 threw "<<move1<<nl;
             cout<<"Current position of Player1: "<<player1_score<<nl;
         }
@@ -79,35 +81,34 @@ int main()
              cout<<"Ivalid move"<<nl;
              cout<<"Current position of Player1: "<<player1_score<<nl;
         }
+
         if(player1_score==100){cout<<nl<<"Player1 is the winner!"<<nl;break;}
+
         s1=snake_99_40(&player1_score);
         if(s1==1){
             cout<<"Oops! You got swallowed by snake_99_40"<<nl;
             cout<<"Current position of Player1: "<<player1_score<<nl;
-        }else if(!s1)
-        { s2=snake_87_22(&player1_score);
+        }
+        s2=snake_87_22(&player1_score);
         if(s2==1){
             cout<<"Oops! You got swallowed by snake_87_22"<<nl;
             cout<<"Current position of Player1: "<<player1_score<<nl;
-        }}
-        else if(!s1&&!s2)
-        { s3=snake_34_7(&player1_score);
+        }
+        s3=snake_34_7(&player1_score);
         if(s3==1){
             cout<<"Oops! You got swallowed by snake_34_7"<<nl;
             cout<<"Current position of Player1: "<<player1_score<<nl;
-        }}
-        else if(!s1&&!s2&&!s3)
-        { l1=ladder_24_94(&player1_score);
+        }
+        l1=ladder_24_94(&player1_score);
         if(l1==1){
             cout<<"Yaay! You got on ladder_24_94"<<nl;
             cout<<"Current position of Player1: "<<player1_score<<nl;
-        }}
-        else if(!s1&&!s2&&!s3&&!l1)
-        { l2=ladder_58_82(&player1_score);
+        }
+        l2=ladder_58_82(&player1_score);
         if(l2==1){
             cout<<"Yaay! You got on ladder_58_82"<<nl;
             cout<<"Current position of Player1: "<<player1_score<<nl;
-        }}
+        }
     }
 
     if(num==2||num==3||num==4){
@@ -115,8 +116,8 @@ int main()
     cin>>press;
     if(press==2){
         int move2;
-        throw_dice(&player2_score,&move2);
-        if(move2){
+        check=throw_dice(&player2_score,&move2);
+        if(check){
             cout<<"Player2 threw "<<move2<<nl;
             cout<<"Current position of Player2: "<<player2_score<<nl;
         }
@@ -125,36 +126,34 @@ int main()
              cout<<"Ivalid move"<<nl;
              cout<<"Current position of Player2: "<<player2_score<<nl;
         }
+
         if(player2_score==100){cout<<nl<<"Player2 is the winner!"<<nl;break;}
+
         s1=snake_99_40(&player2_score);
         if(s1==1){
             cout<<"Oops! You got swallowed by snake_99_40"<<nl;
             cout<<"Current position of Player2: "<<player2_score<<nl;
         }
-        else if(!s1)
-        { s2=snake_87_22(&player2_score);
+        s2=snake_87_22(&player2_score);
         if(s2==1){
             cout<<"Oops! You got swallowed by snake_87_22"<<nl;
             cout<<"Current position of Player2: "<<player2_score<<nl;
-        }}
-        else if(!s1&&!s2)
-        { s3=snake_34_7(&player2_score);
+        }
+        s3=snake_34_7(&player2_score);
         if(s3==1){
             cout<<"Oops! You got swallowed by snake_34_7"<<nl;
             cout<<"Current position of Player2: "<<player2_score<<nl;
-        }}
-        else if(!s1&&!s2&&!s3)
-        { l1=ladder_24_94(&player2_score);
+        }
+        l1=ladder_24_94(&player2_score);
         if(l1==1){
             cout<<"Yaay! You got on ladder_24_94"<<nl;
             cout<<"Current position of Player2: "<<player2_score<<nl;
-        }}
-        else if(!s1&&!s2&&!s3&&!l1)
-        { l2=ladder_58_82(&player2_score);
+        }
+        l2=ladder_58_82(&player2_score);
         if(l2==1){
             cout<<"Yaay! You got on ladder_58_82"<<nl;
             cout<<"Current position of Player2: "<<player2_score<<nl;
-        }}
+        }
     }
     }
 
@@ -163,8 +162,8 @@ int main()
     cin>>press;
     if(press==3){
         int move3;
-        throw_dice(&player3_score,&move3);
-        if(move3){
+        check=throw_dice(&player3_score,&move3);
+        if(check){
             cout<<"Player3 threw "<<move3<<nl;
             cout<<"Current position of Player3: "<<player3_score<<nl;
         }
@@ -173,36 +172,34 @@ int main()
              cout<<"Ivalid move"<<nl;
              cout<<"Current position of Player3: "<<player3_score<<nl;
         }
+
         if(player3_score==100){cout<<nl<<"Player3 is the winner!"<<nl;break;}
+
         s1=snake_99_40(&player3_score);
         if(s1==1){
             cout<<"Oops! You got swallowed by snake_99_40"<<nl;
             cout<<"Current position of Player3: "<<player3_score<<nl;
         }
-        else if(!s1)
-        { s2=snake_87_22(&player3_score);
+        s2=snake_87_22(&player3_score);
         if(s2==1){
             cout<<"Oops! You got swallowed by snake_87_22"<<nl;
             cout<<"Current position of Player3: "<<player3_score<<nl;
-        }}
-        else if(!s1&&!s2)
-        { s3=snake_34_7(&player3_score);
+        }
+        s3=snake_34_7(&player3_score);
         if(s3==1){
             cout<<"Oops! You got swallowed by snake_34_7"<<nl;
             cout<<"Current position of Player3: "<<player3_score<<nl;
-        }}
-        else if(!s1&&!s2&&!s3)
-        { l1=ladder_24_94(&player3_score);
+        }
+        l1=ladder_24_94(&player3_score);
         if(l1==1){
             cout<<"Yaay! You got on ladder_24_94"<<nl;
             cout<<"Current position of Player3: "<<player3_score<<nl;
-        }}
-        else if(!s1&&!s2&&!s3&&!l1)
-        { l2=ladder_58_82(&player3_score);
+        }
+        l2=ladder_58_82(&player3_score);
         if(l2==1){
             cout<<"Yaay! You got on ladder_58_82"<<nl;
             cout<<"Current position of Player3: "<<player3_score<<nl;
-        }}
+        }
     }
     }
 
@@ -211,8 +208,8 @@ int main()
     cin>>press;
     if(press==4){
         int move4;
-        throw_dice(&player4_score,&move4);
-        if(move4){
+        check=throw_dice(&player4_score,&move4);
+        if(check){
             cout<<"Player4 threw "<<move4<<nl;
             cout<<"Current position of Player4: "<<player4_score<<nl;
         }
@@ -221,36 +218,34 @@ int main()
              cout<<"Ivalid move"<<nl;
              cout<<"Current position of Player4: "<<player4_score<<nl;
         }
+
         if(player4_score==100){cout<<nl<<"Player4 is the winner!"<<nl;break;}
+
         s1=snake_99_40(&player4_score);
         if(s1==1){
             cout<<"Oops! You got swallowed by snake_99_40"<<nl;
             cout<<"Current position of Player4: "<<player4_score<<nl;
         }
-        else if(!s1)
-        { s2=snake_87_22(&player4_score);
+        s2=snake_87_22(&player4_score);
         if(s2==1){
             cout<<"Oops! You got swallowed by snake_87_22"<<nl;
             cout<<"Current position of Player4: "<<player4_score<<nl;
-        }}
-        else if(!s1&&!s2)
-        { s3=snake_34_7(&player4_score);
+        }
+        s3=snake_34_7(&player4_score);
         if(s3==1){
             cout<<"Oops! You got swallowed by snake_34_7"<<nl;
             cout<<"Current position of Player4: "<<player4_score<<nl;
-        }}
-        else if(!s1&&!s2&&!s3)
-        { l1=ladder_24_94(&player4_score);
+        }
+        l1=ladder_24_94(&player4_score);
         if(l1==1){
             cout<<"Yaay! You got on ladder_24_94"<<nl;
             cout<<"Current position of Player4: "<<player4_score<<nl;
-        }}
-        else if(!s1&&!s2&&!s3&&!l1)
-        { l2=ladder_58_82(&player4_score);
+        }
+        l2=ladder_58_82(&player4_score);
         if(l2==1){
             cout<<"Yaay! You got on ladder_58_82"<<nl;
             cout<<"Current position of Player4: "<<player4_score<<nl;
-        }}
+        }
     }
     }
 
@@ -258,3 +253,5 @@ int main()
     cout<<nl<<"~~~THANKS FOR PLAYING~~~"<<nl;
     return 0;
 }
+
+
